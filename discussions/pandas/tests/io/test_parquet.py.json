@@ -889,5 +889,38 @@
     "commit" : "d05e9f56c34be7d8dfd4b0a8758fa69d543bd8e3",
     "line" : 33,
     "diffHunk" : "@@ -1,1 +58,62 @@            marks=pytest.mark.skipif(\n                not _HAVE_FASTPARQUET or get_option(\"mode.data_manager\") == \"array\",\n                reason=\"fastparquet is not installed or ArrayManager is used\",\n            ),\n        ),"
+  },
+  {
+    "id" : "b710459e-8a83-4e4e-8467-c3d214efae69",
+    "prId" : 42987,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42987#pullrequestreview-728030156",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "d61787e5-34e8-42f1-9115-2b7e8040e4d8",
+        "parentId" : null,
+        "authorId" : "cc7022b2-2831-4c63-a4da-d18b0d342508",
+        "body" : "This monkeypatch actually shouldn't be needed?",
+        "createdAt" : "2021-08-11T21:37:14Z",
+        "updatedAt" : "2021-08-11T21:37:15Z",
+        "lastEditedBy" : "cc7022b2-2831-4c63-a4da-d18b0d342508",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "0935cc94-745c-4748-87d7-67468f317efb",
+        "parentId" : "d61787e5-34e8-42f1-9115-2b7e8040e4d8",
+        "authorId" : "8bcc6ff5-c629-4dcd-bcad-c702786f797e",
+        "body" : "Yep, forgot to revert this part. It's actually present in master too. Will do after this, so the bot can auto backport.",
+        "createdAt" : "2021-08-11T23:14:10Z",
+        "updatedAt" : "2021-08-11T23:14:10Z",
+        "lastEditedBy" : "8bcc6ff5-c629-4dcd-bcad-c702786f797e",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "1080e1187e0ce2e1c1817803a853a8b06eeb12e1",
+    "line" : 107,
+    "diffHunk" : "@@ -1,1 +1071,1075 @@        import fastparquet as fp\n\n        monkeypatch.setattr(fp, \"__version__\", \"0.4\")\n        with tm.ensure_clean() as path:\n            df.to_parquet(path)"
   }
 ]
