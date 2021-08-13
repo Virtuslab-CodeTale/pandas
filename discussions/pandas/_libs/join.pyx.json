@@ -207,5 +207,38 @@
     "commit" : "bb72c68f92120a9d2800b8b258f1989cdd139cfd",
     "line" : 6,
     "diffHunk" : "@@ -1,1 +268,272 @@    uint8_t\n    uint16_t\n    uint32_t\n    uint64_t\n"
+  },
+  {
+    "id" : "cdcfcfef-c0ba-47ad-a685-b10423b1c221",
+    "prId" : 41153,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/41153#pullrequestreview-657526766",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "3f50c2cb-b0bd-41f2-976b-f904b02e869a",
+        "parentId" : null,
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "are there tests specific to this?",
+        "createdAt" : "2021-05-11T18:51:41Z",
+        "updatedAt" : "2021-05-11T18:51:41Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "dffb5db7-6140-4999-af18-5d0c2fb32819",
+        "parentId" : "3f50c2cb-b0bd-41f2-976b-f904b02e869a",
+        "authorId" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "body" : "I couldn't find anything testing these specifically. These types are used in joins, and joins use indexes, so the new e.g. `uint8` dtypes index require that these should be added, else the join tests will fail.\r\n\r\n",
+        "createdAt" : "2021-05-12T07:01:28Z",
+        "updatedAt" : "2021-05-12T07:01:28Z",
+        "lastEditedBy" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "bb72c68f92120a9d2800b8b258f1989cdd139cfd",
+    "line" : 6,
+    "diffHunk" : "@@ -1,1 +268,272 @@    uint8_t\n    uint16_t\n    uint32_t\n    uint64_t\n"
   }
 ]

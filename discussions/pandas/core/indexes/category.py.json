@@ -790,5 +790,71 @@
     "commit" : "bb72c68f92120a9d2800b8b258f1989cdd139cfd",
     "line" : 14,
     "diffHunk" : "@@ -1,1 +284,288 @@    @doc(Index.astype)\n    def astype(self, dtype: Dtype, copy: bool = True) -> Index:\n        from pandas.core.api import NumericIndex\n\n        dtype = pandas_dtype(dtype)"
+  },
+  {
+    "id" : "33359804-f45b-4d94-b726-df71c4992b61",
+    "prId" : 41153,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/41153#pullrequestreview-718689431",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "09ec0fb1-56d0-4c1c-97b2-512126d3e4db",
+        "parentId" : null,
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "can annotate dtype as Dtype",
+        "createdAt" : "2021-07-26T17:57:56Z",
+        "updatedAt" : "2021-07-26T17:57:56Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "347a750b-8c5e-4484-8fd7-801fdaa843b3",
+        "parentId" : "09ec0fb1-56d0-4c1c-97b2-512126d3e4db",
+        "authorId" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "body" : "Ok.",
+        "createdAt" : "2021-07-28T23:31:40Z",
+        "updatedAt" : "2021-07-28T23:31:41Z",
+        "lastEditedBy" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "7f5af4f8-c798-4d4e-964b-43d0ac0ee760",
+        "parentId" : "09ec0fb1-56d0-4c1c-97b2-512126d3e4db",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "should we change/deprecate Index.astype(np.int32), also Index(foo, dtype=np.int32)?",
+        "createdAt" : "2021-07-29T16:24:07Z",
+        "updatedAt" : "2021-07-29T16:24:07Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "f875646b-3eed-4eda-9b01-aa80811ebe47",
+        "parentId" : "09ec0fb1-56d0-4c1c-97b2-512126d3e4db",
+        "authorId" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "body" : "Hmm, `Index.astype(np.int32)` returning an `Int64Index` is probably used internally, so a deprecation would require if/else clauses at various locations in the code base. Probably possible, but could we get this PR in first? This PR isn't public-facing, so I don't see a problem just merging this first/separately.",
+        "createdAt" : "2021-07-29T23:21:06Z",
+        "updatedAt" : "2021-07-29T23:25:28Z",
+        "lastEditedBy" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "3f574235-4128-43fe-b11f-c6b35be915fd",
+        "parentId" : "09ec0fb1-56d0-4c1c-97b2-512126d3e4db",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "doing that as a follow-up sounds good",
+        "createdAt" : "2021-07-30T03:22:48Z",
+        "updatedAt" : "2021-07-30T03:22:48Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "bb72c68f92120a9d2800b8b258f1989cdd139cfd",
+    "line" : 14,
+    "diffHunk" : "@@ -1,1 +284,288 @@    @doc(Index.astype)\n    def astype(self, dtype: Dtype, copy: bool = True) -> Index:\n        from pandas.core.api import NumericIndex\n\n        dtype = pandas_dtype(dtype)"
   }
 ]

@@ -75,5 +75,27 @@
     "commit" : "1170905c5119d071cd8fec18c67ae3981185c8f5",
     "line" : 5,
     "diffHunk" : "@@ -1,1 +229,233 @@- Bug in indexing on a :class:`MultiIndex` failing to drop scalar levels when the indexer is a tuple containing a datetime-like string (:issue:`42476`)\n- Bug in :meth:`DataFrame.sort_values` and :meth:`Series.sort_values` when passing an ascending value, failed to raise or incorrectly raising ``ValueError`` (:issue:`41634`)\n- Bug in updating values of :class:`pandas.Series` using boolean index, created by using :meth:`pandas.DataFrame.pop` (:issue:`42530`)\n\nMissing"
+  },
+  {
+    "id" : "16f86069-8281-4d49-affb-cf524f1bb5d8",
+    "prId" : 41893,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/41893#pullrequestreview-727901156",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "5cb97e4a-fbb2-4335-9b2b-aa384091c7b3",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "might be worth creating a styler sub-section in other enhancements (followon)",
+        "createdAt" : "2021-08-11T19:56:29Z",
+        "updatedAt" : "2021-08-11T19:56:29Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "1c7ef8b7cdc0d46e2e9f79a99404a148b459d60a",
+    "line" : 4,
+    "diffHunk" : "@@ -1,1 +39,43 @@- Added ``sparse_index`` and ``sparse_columns`` keyword arguments to :meth:`.Styler.to_html` (:issue:`41946`)\n- Added keyword argument ``environment`` to :meth:`.Styler.to_latex` also allowing a specific \"longtable\" entry with a separate jinja2 template (:issue:`41866`)\n- :meth:`.Styler.apply_index` and :meth:`.Styler.applymap_index` added to allow conditional styling of index and column header values (:issue:`41893`)\n- :meth:`.GroupBy.cummin` and :meth:`.GroupBy.cummax` now support the argument ``skipna`` (:issue:`34047`)\n-"
   }
 ]

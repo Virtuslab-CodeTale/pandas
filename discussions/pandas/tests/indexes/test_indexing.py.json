@@ -240,5 +240,82 @@
     "commit" : "b2d3dbb584a6b656a77adb6280ce65f57ddce785",
     "line" : 46,
     "diffHunk" : "@@ -1,1 +323,327 @@def test_get_indexer_non_unique_multiple_nans(idx, target, expected):\n    # GH 35392\n    axis = Index(idx)\n    actual = axis.get_indexer_for(target)\n    tm.assert_numpy_array_equal(actual, expected)"
+  },
+  {
+    "id" : "d4f4f8f4-910f-4cb9-805c-b89b3cd60253",
+    "prId" : 35498,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/35498#pullrequestreview-543028644",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "1c5e10c8-2ac6-4dbd-9a39-11c04181dfd4",
+        "parentId" : null,
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "does np.nan vs `float(\"NaN\")` make a difference?",
+        "createdAt" : "2020-10-09T15:13:47Z",
+        "updatedAt" : "2021-05-10T01:46:39Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "5af7601f-9ede-453b-9719-fe6db1f69692",
+        "parentId" : "1c5e10c8-2ac6-4dbd-9a39-11c04181dfd4",
+        "authorId" : "eaaaa037-1e8b-4ee3-a6ee-3e459b12fc2f",
+        "body" : "I don't believe so. I changed all the np.nan to float(\"NaN\") and tests are all passing. Would you like me to include a separate test case for float(\"NaN\")?",
+        "createdAt" : "2020-10-13T14:28:42Z",
+        "updatedAt" : "2021-05-10T01:46:39Z",
+        "lastEditedBy" : "eaaaa037-1e8b-4ee3-a6ee-3e459b12fc2f",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "774a63f3-c462-4399-a166-ded5774488f2",
+        "parentId" : "1c5e10c8-2ac6-4dbd-9a39-11c04181dfd4",
+        "authorId" : "8a5d728c-e241-4a19-b667-385656e4fd50",
+        "body" : "please add that testcase",
+        "createdAt" : "2020-12-02T16:42:14Z",
+        "updatedAt" : "2021-05-10T01:46:39Z",
+        "lastEditedBy" : "8a5d728c-e241-4a19-b667-385656e4fd50",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "b2d3dbb584a6b656a77adb6280ce65f57ddce785",
+    "line" : 25,
+    "diffHunk" : "@@ -1,1 +302,306 @@    \"idx,target,expected\",\n    [\n        ([np.nan, \"var1\", np.nan], [np.nan], np.array([0, 2], dtype=np.intp)),\n        (\n            [np.nan, \"var1\", np.nan],"
+  },
+  {
+    "id" : "d7b58bca-5096-4a25-8fae-09a0aa2e1687",
+    "prId" : 35498,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/35498#pullrequestreview-559216483",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "375f53ee-eb04-4670-a2b6-f900bc96446b",
+        "parentId" : null,
+        "authorId" : "8a5d728c-e241-4a19-b667-385656e4fd50",
+        "body" : "total nit but i'd combine these two lines into \r\n``` python\r\nresult = Index(axis).get_indexer_for(target)\r\n```",
+        "createdAt" : "2020-12-28T16:15:49Z",
+        "updatedAt" : "2021-05-10T01:46:39Z",
+        "lastEditedBy" : "8a5d728c-e241-4a19-b667-385656e4fd50",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "ac0cdd48-86f6-4d58-a54d-329a98c26ff6",
+        "parentId" : "375f53ee-eb04-4670-a2b6-f900bc96446b",
+        "authorId" : "eaaaa037-1e8b-4ee3-a6ee-3e459b12fc2f",
+        "body" : "agreed we can combine - I'll change",
+        "createdAt" : "2020-12-28T16:36:33Z",
+        "updatedAt" : "2021-05-10T01:46:39Z",
+        "lastEditedBy" : "eaaaa037-1e8b-4ee3-a6ee-3e459b12fc2f",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "b2d3dbb584a6b656a77adb6280ce65f57ddce785",
+    "line" : 46,
+    "diffHunk" : "@@ -1,1 +323,327 @@def test_get_indexer_non_unique_multiple_nans(idx, target, expected):\n    # GH 35392\n    axis = Index(idx)\n    actual = axis.get_indexer_for(target)\n    tm.assert_numpy_array_equal(actual, expected)"
   }
 ]

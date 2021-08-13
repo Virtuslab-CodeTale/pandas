@@ -713,5 +713,203 @@
     "commit" : "bb72c68f92120a9d2800b8b258f1989cdd139cfd",
     "line" : 79,
     "diffHunk" : "@@ -1,1 +255,259 @@            # NumericIndex[int32] and not Int64Index with dtype int64.\n            # When Int64Index etc. are removed from the code base, removed this also.\n            if not is_extension_array_dtype(dtype) and is_numeric_dtype(dtype):\n                return self._constructor(self, dtype=dtype, copy=copy)\n"
+  },
+  {
+    "id" : "79f2a521-cb6d-4786-9fc8-5d7189d06a15",
+    "prId" : 41153,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/41153#pullrequestreview-714320970",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "801fd7f2-e06d-4c3c-ba96-cc1f3cea5579",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "why at this level? ",
+        "createdAt" : "2021-05-21T18:56:22Z",
+        "updatedAt" : "2021-05-21T18:56:50Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "68f332ac-753d-45d1-8267-79b2b318c18d",
+        "parentId" : "801fd7f2-e06d-4c3c-ba96-cc1f3cea5579",
+        "authorId" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "body" : "If we do `Float64Index().astype(int32)` we should get back an Int64Index[int64]. If we do `NumericIndex().astype(int32)` we should get a `NumericIndex[int32]`.\r\n\r\nA fairly big bit of this type of complexity in this PR comes from dealing with NumericIndex vs. Int64Index etc.",
+        "createdAt" : "2021-05-21T22:10:10Z",
+        "updatedAt" : "2021-05-21T22:10:10Z",
+        "lastEditedBy" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "4e9960e4-5f3f-4c1b-b9ee-77ab5d7b7cfa",
+        "parentId" : "801fd7f2-e06d-4c3c-ba96-cc1f3cea5579",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "i don't understand your example if we now can astype to int32 why wouldn't we do that?",
+        "createdAt" : "2021-06-10T23:14:45Z",
+        "updatedAt" : "2021-06-10T23:16:07Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "dee360b5-9103-489c-a6d3-4fb653cd46ec",
+        "parentId" : "801fd7f2-e06d-4c3c-ba96-cc1f3cea5579",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "why are Float64 and the existing Index types not just an alias for the NumericIndex of ty at type? \n\neg it's just a name",
+        "createdAt" : "2021-06-10T23:15:51Z",
+        "updatedAt" : "2021-06-10T23:16:07Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "66f97f9e-3803-43f6-b636-977dea6d3812",
+        "parentId" : "801fd7f2-e06d-4c3c-ba96-cc1f3cea5579",
+        "authorId" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "body" : "Currently both `Index().astype(int32)`, `Index(series, dtype=int32)` and `Float64().astype(int32)` return a `Int64Index`.\r\n\r\nThere may be quite some usages that expect this behavious to continue, so returning a `NumericIndex[int32]` would break in those cases.",
+        "createdAt" : "2021-06-23T06:25:15Z",
+        "updatedAt" : "2021-06-23T06:25:15Z",
+        "lastEditedBy" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "1462036d-2ba2-43ce-ab22-a3590d059b7a",
+        "parentId" : "801fd7f2-e06d-4c3c-ba96-cc1f3cea5579",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "ok i c, can you leave some comments to this effect, also reference the issue about _is_backwards_compat_public_numeric_index (e.g. anywhere it should be eventually fixed)",
+        "createdAt" : "2021-07-25T14:13:13Z",
+        "updatedAt" : "2021-07-25T14:13:43Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "bb72c68f92120a9d2800b8b258f1989cdd139cfd",
+    "line" : 71,
+    "diffHunk" : "@@ -1,1 +247,251 @@                # GH 13149\n                arr = astype_nansafe(self._values, dtype=dtype)\n                if isinstance(self, Float64Index):\n                    return Int64Index(arr, name=self.name)\n                else:"
+  },
+  {
+    "id" : "8c09116a-86cc-4def-8d5d-71581691167b",
+    "prId" : 41153,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/41153#pullrequestreview-718607781",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "fa19adce-0d50-4d8c-8bf9-6825f2ba3525",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "why do you think you need this try/except? e.g. validate_dtype should raise correct?",
+        "createdAt" : "2021-07-25T14:11:31Z",
+        "updatedAt" : "2021-07-25T14:13:43Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "f1a0fd5e-a7a9-4692-94a7-76b6441e22da",
+        "parentId" : "fa19adce-0d50-4d8c-8bf9-6825f2ba3525",
+        "authorId" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "body" : "There are a lot of combinations of `data` and `dtype` and it's difficult (for me) to nail down to something sensible. For example:\r\n\r\n```python\r\n>>> data =  [pd.Timestamp(\"20130101\")]\r\n>>> NumericIndex(data)\r\n>>> NumericIndex(data, dtype=\"float64\")\r\n>>> NumericIndex(np.array(data))\r\n>>> Float64Index(data)\r\n```\r\n\r\nmay not give the same error or error message.\r\n\r\nI've tried again now and can't seem to find anything clearer. I'm not so happy about it myself, but there just seems to be very difficult to improve (for me, maybe someone else can find something better).\r\n\r\n",
+        "createdAt" : "2021-07-25T21:45:38Z",
+        "updatedAt" : "2021-07-25T21:46:18Z",
+        "lastEditedBy" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "88c927b3-d3de-42e5-9f98-099414951f09",
+        "parentId" : "fa19adce-0d50-4d8c-8bf9-6825f2ba3525",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "i c, ok, can you comment on this (as we may want to try to figure this out in the future)",
+        "createdAt" : "2021-07-28T01:35:50Z",
+        "updatedAt" : "2021-07-28T01:37:51Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "d0db131f-6df8-47b6-954b-a66df7277e31",
+        "parentId" : "fa19adce-0d50-4d8c-8bf9-6825f2ba3525",
+        "authorId" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "body" : "Ok.",
+        "createdAt" : "2021-07-28T23:22:46Z",
+        "updatedAt" : "2021-07-28T23:22:46Z",
+        "lastEditedBy" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "b76c743c-bc20-4160-91f2-88726918c968",
+        "parentId" : "fa19adce-0d50-4d8c-8bf9-6825f2ba3525",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "can you add a \"TODO\" to this comment",
+        "createdAt" : "2021-07-29T16:24:39Z",
+        "updatedAt" : "2021-07-29T16:24:40Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "7b39ba08-9448-406d-bdd5-b50692c1c669",
+        "parentId" : "fa19adce-0d50-4d8c-8bf9-6825f2ba3525",
+        "authorId" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "body" : "Ok.",
+        "createdAt" : "2021-07-29T23:24:45Z",
+        "updatedAt" : "2021-07-29T23:24:45Z",
+        "lastEditedBy" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "bb72c68f92120a9d2800b8b258f1989cdd139cfd",
+    "line" : 17,
+    "diffHunk" : "@@ -1,1 +171,175 @@            # Efforts to avoid this try/except welcome.\n            # See https://github.com/pandas-dev/pandas/pull/41153#discussion_r676206222\n            try:\n                subarr = np.array(data, dtype=dtype, copy=copy)\n                cls._validate_dtype(subarr.dtype)"
+  },
+  {
+    "id" : "c0a71ab6-b6e6-4532-bf1f-cfac4c5e1873",
+    "prId" : 41153,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/41153#pullrequestreview-716506880",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "eb1296b7-5e0e-4812-9f27-4ac351f1945c",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "why is this needed?",
+        "createdAt" : "2021-07-25T14:13:25Z",
+        "updatedAt" : "2021-07-25T14:13:43Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "d7ef21bd-4df5-4766-a4ef-b506e840509e",
+        "parentId" : "eb1296b7-5e0e-4812-9f27-4ac351f1945c",
+        "authorId" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "body" : "The super method is `Index.astype`. That method needs to assume that numeric indexes are `Int64Index` etc. and not `NumericIndex` in order to maintain backward compatability.\r\n\r\nSo without the lines above e.g. `NumericIndex[int32].astype(\"int8\")` would return a `Int64Index` with int64 dtype , which is not what we'd want.\r\n\r\n",
+        "createdAt" : "2021-07-25T22:46:25Z",
+        "updatedAt" : "2021-07-25T22:46:25Z",
+        "lastEditedBy" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "37f8a656-cfaf-4300-93c8-9028c02e516d",
+        "parentId" : "eb1296b7-5e0e-4812-9f27-4ac351f1945c",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "kk can you leave a comment to this effect",
+        "createdAt" : "2021-07-28T01:36:29Z",
+        "updatedAt" : "2021-07-28T01:37:51Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "bb72c68f92120a9d2800b8b258f1989cdd139cfd",
+    "line" : 79,
+    "diffHunk" : "@@ -1,1 +255,259 @@            # NumericIndex[int32] and not Int64Index with dtype int64.\n            # When Int64Index etc. are removed from the code base, removed this also.\n            if not is_extension_array_dtype(dtype) and is_numeric_dtype(dtype):\n                return self._constructor(self, dtype=dtype, copy=copy)\n"
   }
 ]

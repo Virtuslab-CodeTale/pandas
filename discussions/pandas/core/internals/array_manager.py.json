@@ -1153,5 +1153,49 @@
     "commit" : "912b044a6023e7f8e44f13e27562c35b94dda136",
     "line" : 29,
     "diffHunk" : "@@ -1,1 +700,704 @@        if verify_integrity:\n            self._axes = [ensure_index(ax) for ax in axes]\n            arrays = [extract_pandas_array(x, None, 1)[0] for x in arrays]\n            self.arrays = [maybe_coerce_values(arr) for arr in arrays]\n            self._verify_integrity()"
+  },
+  {
+    "id" : "a5301a19-b1f2-4048-8a23-14ae36959006",
+    "prId" : 41879,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/41879#pullrequestreview-722824980",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "0e20f0ed-9a8c-4a55-aa8e-54aa071aa6fe",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "can you type annotate the return values at the very least on these (Any is fine) just indicative",
+        "createdAt" : "2021-07-12T13:14:32Z",
+        "updatedAt" : "2021-07-12T13:14:56Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "5c8bbeea-2a92-4616-9fc1-6bc54d2d5b67",
+        "parentId" : "0e20f0ed-9a8c-4a55-aa8e-54aa071aa6fe",
+        "authorId" : "cc7022b2-2831-4c63-a4da-d18b0d342508",
+        "body" : "This is an existing method, all other Manager methods with general `indexer` argument are not yet typed, so I would prefer to leave that for a typing-specific PR (I also thought that we generally want to avoid adding `Any` for \"not yet typed\" unless it's really \"any\").",
+        "createdAt" : "2021-08-04T13:43:23Z",
+        "updatedAt" : "2021-08-04T13:43:23Z",
+        "lastEditedBy" : "cc7022b2-2831-4c63-a4da-d18b0d342508",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "c0c00c14-f572-48b2-aea4-bd6c270974b0",
+        "parentId" : "0e20f0ed-9a8c-4a55-aa8e-54aa071aa6fe",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "kk",
+        "createdAt" : "2021-08-04T23:49:25Z",
+        "updatedAt" : "2021-08-04T23:50:18Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "fbf70976238a4cf5e95e9b475baee787df8e91ba",
+    "line" : 3,
+    "diffHunk" : "@@ -1,1 +1281,1285 @@        return type(self)([new_array], self._axes)\n\n    def setitem(self, indexer, value):\n        \"\"\"\n        Set values with indexer."
   }
 ]

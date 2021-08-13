@@ -6235,5 +6235,38 @@
     "commit" : "e41e00e9eb1eeeb9368a7019b826ef761f81676e",
     "line" : 4,
     "diffHunk" : "@@ -1,1 +3916,3920 @@                    indexer, _ = self.get_indexer_non_unique(target)\n\n                if not self.is_unique:\n                    # GH#42568\n                    warnings.warn("
+  },
+  {
+    "id" : "d08fda2b-939a-4f95-87af-49d65a4f78af",
+    "prId" : 41153,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/41153#pullrequestreview-717547982",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "e92a1882-069b-4981-8fb9-e51baa96b8d2",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "why can't this be handled in the Index constructor itself?",
+        "createdAt" : "2021-07-28T01:35:00Z",
+        "updatedAt" : "2021-07-28T01:37:51Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "64c89941-2af6-47a1-a7c8-5bde1edd71e0",
+        "parentId" : "e92a1882-069b-4981-8fb9-e51baa96b8d2",
+        "authorId" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "body" : "It's the same thing as the others: The Index constructor returns Int64Index etc. in order to maintain backward compat.\r\n\r\nWhen we remove Int64Index etc. in pandas 2.0, this block can be removed, see comment on line 363 regarding this.",
+        "createdAt" : "2021-07-28T23:36:58Z",
+        "updatedAt" : "2021-07-28T23:37:14Z",
+        "lastEditedBy" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "bb72c68f92120a9d2800b8b258f1989cdd139cfd",
+    "line" : 37,
+    "diffHunk" : "@@ -1,1 +5732,5736 @@            attributes[\"dtype\"] = self.dtype\n\n        if self._is_backward_compat_public_numeric_index and is_numeric_dtype(\n            new_values.dtype\n        ):"
   }
 ]
