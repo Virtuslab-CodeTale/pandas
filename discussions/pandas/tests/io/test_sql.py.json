@@ -548,5 +548,49 @@
     "commit" : "195520b1a5fb8456a7b41d71f1e7522485e83785",
     "line" : 29,
     "diffHunk" : "@@ -1,1 +2616,2620 @@\nclass TestXSQLite:\n    def setup_method(self):\n        self.conn = sqlite3.connect(\":memory:\")\n"
+  },
+  {
+    "id" : "1299d2b7-e6a6-4977-b017-5b325367ce76",
+    "prId" : 42835,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42835#pullrequestreview-724860325",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "1105c18d-d45c-4712-a62b-5c802a5056f4",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "can you fixturize? (separate PR also ok)",
+        "createdAt" : "2021-08-05T00:29:38Z",
+        "updatedAt" : "2021-08-07T23:44:33Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "ecd308a8-3ce2-49e6-a1a4-ebefef8a4dd5",
+        "parentId" : "1105c18d-d45c-4712-a62b-5c802a5056f4",
+        "authorId" : "68476df5-030f-41c1-b3b1-920985d63043",
+        "body" : "Yes, I'm going to fixturize all sql tests. will do it in small steps.",
+        "createdAt" : "2021-08-08T03:29:39Z",
+        "updatedAt" : "2021-08-08T03:29:39Z",
+        "lastEditedBy" : "68476df5-030f-41c1-b3b1-920985d63043",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "f7f3d19f-8c5c-4282-89c0-a970bcc9aaa7",
+        "parentId" : "1105c18d-d45c-4712-a62b-5c802a5056f4",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "kk great",
+        "createdAt" : "2021-08-08T03:35:29Z",
+        "updatedAt" : "2021-08-08T03:35:29Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "195520b1a5fb8456a7b41d71f1e7522485e83785",
+    "line" : 29,
+    "diffHunk" : "@@ -1,1 +2616,2620 @@\nclass TestXSQLite:\n    def setup_method(self):\n        self.conn = sqlite3.connect(\":memory:\")\n"
   }
 ]

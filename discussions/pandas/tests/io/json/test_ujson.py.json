@@ -31,5 +31,38 @@
     "commit" : "1b59fc408d557b546a04c0c599fa79313d582837",
     "line" : 3,
     "diffHunk" : "@@ -1,1 +780,784 @@        tm.assert_almost_equal(arr, arr_out)\n\n    def test_0d_array(self):\n        # gh-18878\n        msg = re.escape(\"array(1) (0d array) is not JSON serializable at the moment\")"
+  },
+  {
+    "id" : "aac06465-9862-4185-b49d-c08366af06b3",
+    "prId" : 42931,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42931#pullrequestreview-724946162",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "166b1788-3b45-462e-b01b-4a9fa61ef49b",
+        "parentId" : null,
+        "authorId" : "5c5b3e8f-505d-4592-b7d0-03291400d46a",
+        "body" : "This is a great test - can we add an analogous test that hits `to_json` to test the user-facing effect?",
+        "createdAt" : "2021-08-08T16:30:14Z",
+        "updatedAt" : "2021-08-08T16:32:12Z",
+        "lastEditedBy" : "5c5b3e8f-505d-4592-b7d0-03291400d46a",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "7d501b8c-d568-40d1-a05d-0cbd0adb9e15",
+        "parentId" : "166b1788-3b45-462e-b01b-4a9fa61ef49b",
+        "authorId" : "e72c5c90-cfbd-4a08-b146-5f7b3902d12f",
+        "body" : "Sure, done.",
+        "createdAt" : "2021-08-08T23:21:09Z",
+        "updatedAt" : "2021-08-08T23:21:09Z",
+        "lastEditedBy" : "e72c5c90-cfbd-4a08-b146-5f7b3902d12f",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "3011ccace1f8de8626e613f1af9c49aa0ecc1c64",
+    "line" : 17,
+    "diffHunk" : "@@ -1,1 +734,738 @@        # JSON keys should be all non-callable non-underscore attributes, see GH-42768\n        test_object = _TestObject(a=1, b=2, _c=3, d=4)\n        assert ujson.decode(ujson.encode(test_object)) == {\"a\": 1, \"b\": 2, \"d\": 4}\n\n"
   }
 ]

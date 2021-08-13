@@ -1,0 +1,46 @@
+[
+  {
+    "id" : "ce2898cc-6d1d-4112-9793-fc960453f02c",
+    "prId" : 42834,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42834#pullrequestreview-724858797",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "530bfca4-7ba9-4a66-b98c-8484b28c4b72",
+        "parentId" : null,
+        "authorId" : "eb0b5a98-1084-4e61-8414-5fb19728b91f",
+        "body" : "Also should probably add a deprecation here too that allows times to be a string of a column label (which is already kinda flawed because a column label isn't always a string). A column of times will always be a nuisance column I think\r\nhttps://github.com/pandas-dev/pandas/blob/a5f8c9a0760d6ca40081e295c4c2e93aef144e9a/pandas/core/window/ewm.py#L317",
+        "createdAt" : "2021-08-01T05:04:05Z",
+        "updatedAt" : "2021-08-01T05:04:06Z",
+        "lastEditedBy" : "eb0b5a98-1084-4e61-8414-5fb19728b91f",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "9a1a82aa-d331-459c-b989-00b33bb715e4",
+        "parentId" : "530bfca4-7ba9-4a66-b98c-8484b28c4b72",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "can this be done separately?  this is less obvious to me",
+        "createdAt" : "2021-08-08T01:41:48Z",
+        "updatedAt" : "2021-08-08T01:41:48Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "fd3925d0-deb6-4fc8-8ad5-21401e14d864",
+        "parentId" : "530bfca4-7ba9-4a66-b98c-8484b28c4b72",
+        "authorId" : "eb0b5a98-1084-4e61-8414-5fb19728b91f",
+        "body" : "I think so, yes. ",
+        "createdAt" : "2021-08-08T02:52:46Z",
+        "updatedAt" : "2021-08-08T02:52:46Z",
+        "lastEditedBy" : "eb0b5a98-1084-4e61-8414-5fb19728b91f",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "4bcbd403340816b436ee5ecfa3069d73be3b46d6",
+    "line" : 8,
+    "diffHunk" : "@@ -1,1 +119,123 @@    with tm.assert_produces_warning(FutureWarning, match=\"nuisance columns\"):\n        # GH#42738\n        result = df.ewm(halflife=halflife, min_periods=min_periods, times=times).mean()\n        expected = df.ewm(halflife=1.0, min_periods=min_periods).mean()\n    tm.assert_frame_equal(result, expected)"
+  }
+]

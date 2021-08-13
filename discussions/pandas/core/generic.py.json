@@ -9887,5 +9887,60 @@
     "commit" : "d68a17db147a810ab799f0d223fa99a171dd9b3e",
     "line" : 5,
     "diffHunk" : "@@ -1,1 +2621,2625 @@              writing, and if the file does not exist it is created.\n            - 'r+': similar to 'a', but the file must already exist.\n        complevel : {0-9}, default None\n            Specifies a compression level for data.\n            A value of 0 or None disables compression."
+  },
+  {
+    "id" : "a6b3439a-516b-41fb-bfe0-f31fc04b7085",
+    "prId" : 42775,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42775#pullrequestreview-719705435",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "d9273fdd-d13e-4517-9063-c54be98530a9",
+        "parentId" : null,
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "if the user doesn't pass anything, does it end up not compressing, i.e. equivalent to complevel=0?",
+        "createdAt" : "2021-07-29T19:48:32Z",
+        "updatedAt" : "2021-07-29T19:48:33Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "5ff8d37c-9ce7-412b-97e8-a5379b9dd6d3",
+        "parentId" : "d9273fdd-d13e-4517-9063-c54be98530a9",
+        "authorId" : "99f74c82-c3ba-477d-8b70-f12c41bd8ded",
+        "body" : "In HDFStore it reads:  `A value of 0 or None disables compression.`\r\n\r\nShould replace the second sentence here with that one. ",
+        "createdAt" : "2021-07-30T09:00:13Z",
+        "updatedAt" : "2021-07-30T09:00:13Z",
+        "lastEditedBy" : "99f74c82-c3ba-477d-8b70-f12c41bd8ded",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "1e9d7378-6acf-46c6-b58f-0d40c8228871",
+        "parentId" : "d9273fdd-d13e-4517-9063-c54be98530a9",
+        "authorId" : "58136e03-6bd4-4b23-b016-d989af413fdb",
+        "body" : "Hello @bashtage , `A value of 0 or None disables compression.` instead of `default None` this is the suggestion right ?",
+        "createdAt" : "2021-07-31T08:53:26Z",
+        "updatedAt" : "2021-07-31T08:53:26Z",
+        "lastEditedBy" : "58136e03-6bd4-4b23-b016-d989af413fdb",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "97cc801b-5339-4e17-944e-25ca44152e49",
+        "parentId" : "d9273fdd-d13e-4517-9063-c54be98530a9",
+        "authorId" : "99f74c82-c3ba-477d-8b70-f12c41bd8ded",
+        "body" : "This should be added the the explanation.  See the explanation on HDFStore.",
+        "createdAt" : "2021-08-01T23:00:08Z",
+        "updatedAt" : "2021-08-01T23:00:09Z",
+        "lastEditedBy" : "99f74c82-c3ba-477d-8b70-f12c41bd8ded",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "d68a17db147a810ab799f0d223fa99a171dd9b3e",
+    "line" : 5,
+    "diffHunk" : "@@ -1,1 +2621,2625 @@              writing, and if the file does not exist it is created.\n            - 'r+': similar to 'a', but the file must already exist.\n        complevel : {0-9}, default None\n            Specifies a compression level for data.\n            A value of 0 or None disables compression."
   }
 ]

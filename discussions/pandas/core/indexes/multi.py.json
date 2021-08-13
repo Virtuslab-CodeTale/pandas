@@ -2814,5 +2814,38 @@
     "commit" : "641a3667bc546d2e5eeb36c327ecd36350c92349",
     "line" : 44,
     "diffHunk" : "@@ -1,1 +3303,3307 @@                    #  of labels\n                    #  github.com/pandas-dev/pandas/issues/39424#issuecomment-871626708\n                    for x in k:\n                        if not is_hashable(x):\n                            # e.g. slice"
+  },
+  {
+    "id" : "52610197-90b9-4761-bc8a-24076fe8dd6a",
+    "prId" : 42329,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42329#pullrequestreview-697767947",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "32933ed7-42f1-4e9e-885e-de8ef82b5ab4",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "can you put this in a method that you just call here. (the stuff in the except)",
+        "createdAt" : "2021-07-01T23:22:40Z",
+        "updatedAt" : "2021-07-01T23:23:11Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "2099e244-48cd-4596-8f3a-40869afe87c1",
+        "parentId" : "32933ed7-42f1-4e9e-885e-de8ef82b5ab4",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "not nicely.  bc of namespace stuff like re-raising.  there's definitely cleanup on the horizon for these methods.",
+        "createdAt" : "2021-07-02T01:58:44Z",
+        "updatedAt" : "2021-07-02T01:58:44Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "641a3667bc546d2e5eeb36c327ecd36350c92349",
+    "line" : 44,
+    "diffHunk" : "@@ -1,1 +3303,3307 @@                    #  of labels\n                    #  github.com/pandas-dev/pandas/issues/39424#issuecomment-871626708\n                    for x in k:\n                        if not is_hashable(x):\n                            # e.g. slice"
   }
 ]

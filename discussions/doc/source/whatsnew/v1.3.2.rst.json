@@ -1,0 +1,35 @@
+[
+  {
+    "id" : "933174b5-c983-4056-9af5-77567ecc8b39",
+    "prId" : 42838,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42838#pullrequestreview-727345595",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "0f286dde-18a6-48d0-8e30-d31519d3b547",
+        "parentId" : null,
+        "authorId" : "554ba0f6-6e6a-40c3-98e0-1a6cc4a8e1c6",
+        "body" : "will need to change to #42816. will do that after backport is merged.\r\n",
+        "createdAt" : "2021-08-11T10:14:51Z",
+        "updatedAt" : "2021-08-11T10:15:08Z",
+        "lastEditedBy" : "554ba0f6-6e6a-40c3-98e0-1a6cc4a8e1c6",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "f7c0a30b-3214-4819-a697-31a3745e3db2",
+        "parentId" : "0f286dde-18a6-48d0-8e30-d31519d3b547",
+        "authorId" : "554ba0f6-6e6a-40c3-98e0-1a6cc4a8e1c6",
+        "body" : "done in #42983",
+        "createdAt" : "2021-08-11T11:03:48Z",
+        "updatedAt" : "2021-08-11T11:03:48Z",
+        "lastEditedBy" : "554ba0f6-6e6a-40c3-98e0-1a6cc4a8e1c6",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "03dea8d7080f6d3ad8372c6092607eebbf768155",
+    "line" : 4,
+    "diffHunk" : "@@ -1,1 +24,28 @@- Fixed regression in comparisons between :class:`Timestamp` object and ``datetime64`` objects outside the implementation bounds for nanosecond ``datetime64`` (:issue:`42794`)\n- Fixed regression in :meth:`.Styler.highlight_min` and :meth:`.Styler.highlight_max` where ``pandas.NA`` was not successfully ignored (:issue:`42650`)\n- Regression in :meth:`Series.nlargest` and :meth:`Series.nsmallest` with nullable integer or float dtype (:issue:`41816`)\n- Fixed regression in :meth:`pandas.Series.quantile` with :class:`pandas.Int64Dtype` (:issue:`42626`)\n"
+  }
+]

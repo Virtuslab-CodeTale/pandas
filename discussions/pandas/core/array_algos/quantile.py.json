@@ -130,5 +130,104 @@
     "commit" : "3d80803f3af783b93f7901eef9896839be7b616d",
     "line" : 42,
     "diffHunk" : "@@ -1,1 +39,43 @@    \"\"\"\n    if isinstance(values, np.ndarray):\n        fill_value = na_value_for_dtype(values.dtype, compat=False)\n        mask = isna(values)\n        result = quantile_with_mask(values, mask, fill_value, qs, interpolation, axis)"
+  },
+  {
+    "id" : "ca5d122d-9c4b-42b4-8952-0d464d0efb81",
+    "prId" : 42936,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42936#pullrequestreview-726729303",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "56c1b272-4e59-498b-be45-ff6cdb5091fd",
+        "parentId" : null,
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "in the Int64 case we probably want Float64 result right?",
+        "createdAt" : "2021-08-08T23:12:44Z",
+        "updatedAt" : "2021-08-08T23:12:45Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "dcd2c6ce-58d4-4d9a-8bc3-4ca6d532e5ca",
+        "parentId" : "56c1b272-4e59-498b-be45-ff6cdb5091fd",
+        "authorId" : "554ba0f6-6e6a-40c3-98e0-1a6cc4a8e1c6",
+        "body" : "should be the same behavior as 1.2.5?",
+        "createdAt" : "2021-08-09T12:57:58Z",
+        "updatedAt" : "2021-08-09T12:57:58Z",
+        "lastEditedBy" : "554ba0f6-6e6a-40c3-98e0-1a6cc4a8e1c6",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "d3c3bf0c-64d0-4f0d-963f-933c6212be9b",
+        "parentId" : "56c1b272-4e59-498b-be45-ff6cdb5091fd",
+        "authorId" : "0ef5341f-d2e3-4390-b980-8f271dce520b",
+        "body" : "Below is from the bug description:\r\n\r\n>**Expected Output**\r\nIf we want to go with the 1.2.5 output, the expected output would be to not error and result in a Series with dtype object. It could also make sense for the resulting series to have float64 dtype.\r\n\r\nI have used this, and returned `float64`",
+        "createdAt" : "2021-08-09T16:04:12Z",
+        "updatedAt" : "2021-08-09T16:04:12Z",
+        "lastEditedBy" : "0ef5341f-d2e3-4390-b980-8f271dce520b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "f8eff883-be28-4ef3-8c7c-583c0589e9d2",
+        "parentId" : "56c1b272-4e59-498b-be45-ff6cdb5091fd",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "umm, why don't we just make `dtype=np.float64` always",
+        "createdAt" : "2021-08-09T22:53:54Z",
+        "updatedAt" : "2021-08-09T22:53:54Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "460fe1cc-1eb3-4544-aa4c-948dc95ed07f",
+        "parentId" : "56c1b272-4e59-498b-be45-ff6cdb5091fd",
+        "authorId" : "0ef5341f-d2e3-4390-b980-8f271dce520b",
+        "body" : "tried that in https://github.com/pandas-dev/pandas/pull/42936/commits/c1857bf34c10f5ea093957e8281cdc8d85e3109e, but there are multiple tests to ensure we get the same extensionDtype in pandas/tests/frame/methods/test_quantile.py::TestQuantileExtensionDtype",
+        "createdAt" : "2021-08-10T07:37:53Z",
+        "updatedAt" : "2021-08-10T07:37:54Z",
+        "lastEditedBy" : "0ef5341f-d2e3-4390-b980-8f271dce520b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "3c8442f7-3e66-440c-bf1c-2b98f3dbd9f6",
+        "parentId" : "56c1b272-4e59-498b-be45-ff6cdb5091fd",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "also breaks the world if we have an all-pd.NA column",
+        "createdAt" : "2021-08-10T16:32:30Z",
+        "updatedAt" : "2021-08-10T16:32:30Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "225794a3-cd92-4b30-bc4b-a4ab9d4d6522",
+        "parentId" : "56c1b272-4e59-498b-be45-ff6cdb5091fd",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "add a comment here on why this is needed.  why do we need the reshape? e.g. we dont' have it on the original.",
+        "createdAt" : "2021-08-10T17:04:40Z",
+        "updatedAt" : "2021-08-10T17:04:41Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "f185aa18-f972-4dba-b21a-2ae5176a89ac",
+        "parentId" : "56c1b272-4e59-498b-be45-ff6cdb5091fd",
+        "authorId" : "0ef5341f-d2e3-4390-b980-8f271dce520b",
+        "body" : "For creating a block from non-EA we need 2d array.\r\nhttps://github.com/pandas-dev/pandas/blob/8a4f29a66cb41b00e477b2bf09e05832a3967017/pandas/core/internals/blocks.py#L1316\r\n\r\nAdded a comment pointing back to the issue.\r\nAlternatively, we can also return `Float64` as @jbrockmendel  suggested above. Because 1.2.5 returned `object` (and not `np.float64`).",
+        "createdAt" : "2021-08-10T18:46:44Z",
+        "updatedAt" : "2021-08-10T18:46:45Z",
+        "lastEditedBy" : "0ef5341f-d2e3-4390-b980-8f271dce520b",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "106f685952146a9ac7534e9eec575de859a77228",
+    "line" : 10,
+    "diffHunk" : "@@ -1,1 +187,191 @@        # GH#42626: not able to safely cast Int64\n        # for floating point output\n        out = np.atleast_2d(np.asarray(res, dtype=np.float64))\n    return out"
   }
 ]

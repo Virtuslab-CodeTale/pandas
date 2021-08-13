@@ -2957,5 +2957,71 @@
     "commit" : "900089d86b3eacf3a0e6426d317c87da12e5058c",
     "line" : 134,
     "diffHunk" : "@@ -1,1 +3186,3190 @@\n\ndef _refactor_levels(\n    level: Level | list[Level] | None,\n    obj: Index,"
+  },
+  {
+    "id" : "5f9110d3-ef82-4fc8-b9ca-d238dc7af195",
+    "prId" : 42636,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42636#pullrequestreview-722837519",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "972263b1-92ed-418f-ab5b-adbb932e9578",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "add a versionadded 1.4 here",
+        "createdAt" : "2021-07-28T01:19:56Z",
+        "updatedAt" : "2021-07-28T01:20:26Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "e75a85a1-891f-4b8b-b3ff-22f64f771de9",
+        "parentId" : "972263b1-92ed-418f-ab5b-adbb932e9578",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "so we call this `level` (no s) elsewhere I think. can you update.",
+        "createdAt" : "2021-08-05T00:22:33Z",
+        "updatedAt" : "2021-08-05T00:22:50Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "12045a352229e8776f0317dd43a65e51e2eb827b",
+    "line" : 45,
+    "diffHunk" : "@@ -1,1 +1773,1777 @@            `DataFrame.loc[<subset>, :]`, to limit ``data`` to *before* applying\n            the function.\n        levels : int, str, list\n            The level(s) to hide in a MultiIndex if hiding the entire index. Cannot be\n            used simultaneously with ``subset``."
+  },
+  {
+    "id" : "c0391e96-456b-465e-8788-53a1586afc0f",
+    "prId" : 42799,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42799#pullrequestreview-721626944",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "d4b49fcd-2d8d-41d9-8da5-bb782794599c",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "can this be in the axis=1 clause above?",
+        "createdAt" : "2021-08-03T19:38:04Z",
+        "updatedAt" : "2021-08-03T19:38:15Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "eab116a9-8c61-4aa2-b8e3-5c3d9b355681",
+        "parentId" : "d4b49fcd-2d8d-41d9-8da5-bb782794599c",
+        "authorId" : "00fd25ec-10ce-4da2-b282-338650c2fd94",
+        "body" : "there are dual conditionals:\r\n```\r\nif MultiIndex:\r\n    if axis==1: ...\r\n    else: ...\r\nelse:\r\n    if axis==1: ...\r\n    else:...\r\n```\r\nso it could be structured differently but I think the code is a bit clearer as is",
+        "createdAt" : "2021-08-03T20:41:21Z",
+        "updatedAt" : "2021-08-03T20:41:22Z",
+        "lastEditedBy" : "00fd25ec-10ce-4da2-b282-338650c2fd94",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "982dea290b0cce3910a6379204704b0adef6745a",
+    "line" : 76,
+    "diffHunk" : "@@ -1,1 +1587,1591 @@            levels = sorted(levels) if levels else range_idx\n\n            if axis == 1:\n                styles = []\n                for i, level in enumerate(levels):"
   }
 ]

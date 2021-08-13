@@ -15195,6 +15195,21 @@
     "updatedAt" : "2021-08-11T09:51:41.568664+02:00"
   },
   {
+    "id" : "e72c5c90-cfbd-4a08-b146-5f7b3902d12f",
+    "remoteIds" : [
+      {
+        "id" : "joelgibson",
+        "url" : "github.com",
+        "provider" : "GitHub"
+      }
+    ],
+    "name" : "Joel Gibson",
+    "avatarUrl" : "https://avatars.githubusercontent.com/u/562215?v=4",
+    "altName" : "joelgibson",
+    "email" : null,
+    "updatedAt" : "2021-08-13T16:26:05.534775Z"
+  },
+  {
     "id" : "e753c819-2e7f-47d1-8c4e-2fd15e62cabc",
     "remoteIds" : [
       {

@@ -6268,5 +6268,38 @@
     "commit" : "bb72c68f92120a9d2800b8b258f1989cdd139cfd",
     "line" : 37,
     "diffHunk" : "@@ -1,1 +5732,5736 @@            attributes[\"dtype\"] = self.dtype\n\n        if self._is_backward_compat_public_numeric_index and is_numeric_dtype(\n            new_values.dtype\n        ):"
+  },
+  {
+    "id" : "222b7bad-551f-4f6a-8d4b-b638127dabbd",
+    "prId" : 42568,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42568#pullrequestreview-723959624",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "83817cc4-2776-4598-8807-6526bfd350c1",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "isn't this the same check as L3892?",
+        "createdAt" : "2021-08-05T22:29:34Z",
+        "updatedAt" : "2021-08-05T22:29:34Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "e71f3332-73b1-45fa-9134-c5e403b0c8d6",
+        "parentId" : "83817cc4-2776-4598-8807-6526bfd350c1",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "no, self.is_unique is _slightly_ different from self._index_as_unique",
+        "createdAt" : "2021-08-06T03:53:21Z",
+        "updatedAt" : "2021-08-06T03:53:21Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "e41e00e9eb1eeeb9368a7019b826ef761f81676e",
+    "line" : 4,
+    "diffHunk" : "@@ -1,1 +3916,3920 @@                    indexer, _ = self.get_indexer_non_unique(target)\n\n                if not self.is_unique:\n                    # GH#42568\n                    warnings.warn("
   }
 ]

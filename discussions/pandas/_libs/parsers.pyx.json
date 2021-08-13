@@ -625,5 +625,38 @@
     "commit" : "e7096cd1dd0ef392541ec6078fe8ffd173b1e6e1",
     "line" : 12,
     "diffHunk" : "@@ -1,1 +1442,1446 @@\n            if na_filter:\n                if kh_get_str_starts_item(na_hashset, word):\n                    # is in NA values\n                    na_count += 1"
+  },
+  {
+    "id" : "8b71edd9-9026-4531-98be-8057cefbe590",
+    "prId" : 42142,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42142#pullrequestreview-724887201",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "f0723886-ad02-4a04-940c-189d003b5a41",
+        "parentId" : null,
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "the linter wants comments before the `if`?",
+        "createdAt" : "2021-07-26T18:57:58Z",
+        "updatedAt" : "2021-07-26T18:57:58Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "cf303eff-1017-4555-93b3-6f48017da705",
+        "parentId" : "f0723886-ad02-4a04-940c-189d003b5a41",
+        "authorId" : "888173f2-4a00-44f2-b380-bc6a5ca76385",
+        "body" : "or just an indented comment - I've gone with that, thanks",
+        "createdAt" : "2021-08-08T10:38:18Z",
+        "updatedAt" : "2021-08-08T10:38:18Z",
+        "lastEditedBy" : "888173f2-4a00-44f2-b380-bc6a5ca76385",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "e7096cd1dd0ef392541ec6078fe8ffd173b1e6e1",
+    "line" : 12,
+    "diffHunk" : "@@ -1,1 +1442,1446 @@\n            if na_filter:\n                if kh_get_str_starts_item(na_hashset, word):\n                    # is in NA values\n                    na_count += 1"
   }
 ]

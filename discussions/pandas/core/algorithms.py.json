@@ -2495,5 +2495,115 @@
     "commit" : "c14bca375fc1f88b0ebc3fdf9d94bab568d1066a",
     "line" : 14,
     "diffHunk" : "@@ -1,1 +911,915 @@    Parameters\n    ----------\n    values : nd.array, ExtensionArray or Series\n        Array over which to check for duplicate values.\n    keep : {'first', 'last', False}, default 'first'"
+  },
+  {
+    "id" : "1b2394b5-0b14-41e0-9b6d-f43a22725597",
+    "prId" : 42838,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42838#pullrequestreview-723514308",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "1c1254e2-778f-4046-9bf9-427395e21547",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "why is this prefereable to hanlding on L1281 with the other dtypes?",
+        "createdAt" : "2021-08-03T19:31:48Z",
+        "updatedAt" : "2021-08-03T19:31:52Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "b7a2bf95-6b86-4c41-a4ab-746f18ca8218",
+        "parentId" : "1c1254e2-778f-4046-9bf9-427395e21547",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "bc ensure_data does the wrong thing with MaskedArrays, np.asarray(obj) defaults to object dtype.\r\n\r\nwe _could_ kludge _ensure_data to work in cases where we dont have any pd.NAs, but doing it here lets us handle cases with NAs too.",
+        "createdAt" : "2021-08-03T19:56:59Z",
+        "updatedAt" : "2021-08-03T19:56:59Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "1e0ec8ce-9611-479f-b704-b5ad0c5ae3b3",
+        "parentId" : "1c1254e2-778f-4046-9bf9-427395e21547",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "> bc ensure_data does the wrong thing with MaskedArrays, np.asarray(obj) defaults to object dtype.\r\n\r\nthis is very unfortunate. I don't really like this approach here. i suppose its ok for a backport though this is na experimental type and so i don't consider this regression to be a big deal.",
+        "createdAt" : "2021-08-04T02:13:00Z",
+        "updatedAt" : "2021-08-04T02:13:00Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "0083b44f-39cc-43c6-bc58-2659bca19f0d",
+        "parentId" : "1c1254e2-778f-4046-9bf9-427395e21547",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "the more i work on it, the more i want to nuke NA from space",
+        "createdAt" : "2021-08-04T02:16:32Z",
+        "updatedAt" : "2021-08-04T02:16:32Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "128f0943-5bac-42f7-beb6-ba31e7f685c4",
+        "parentId" : "1c1254e2-778f-4046-9bf9-427395e21547",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "ok what is involved with changing this to a non-recursive formulation though? e.g. ensure_data *should* be able to handle NA (if not we will have other issues)",
+        "createdAt" : "2021-08-05T12:10:49Z",
+        "updatedAt" : "2021-08-05T12:10:49Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "4457e4df-6c1c-44e9-b18b-3fa9a37056a2",
+        "parentId" : "1c1254e2-778f-4046-9bf9-427395e21547",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "Three options:\r\n\r\n1) have ensure_data special-case MaskedArray cases with no NAs, in which case they can just use the ndarray.  This fixes the regression (cases with NAs didnt use to work IIUC).  kluuuuudge\r\n2) make algos.kth_smallest support object dtype (and not choke on pd.NA)\r\n3) make the EA implement its own nlargest\r\n\r\nI decided the approach here was less kludgy than those in part bc this function uses `obj.dropna()`, so the MaskedArray case actually is much simpler to implement than an arbitrary EA",
+        "createdAt" : "2021-08-05T15:21:13Z",
+        "updatedAt" : "2021-08-05T15:21:14Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "0b7e607a-3171-43c1-a0e3-2fe003f3a015",
+        "parentId" : "1c1254e2-778f-4046-9bf9-427395e21547",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "why is 1 a kludge? ",
+        "createdAt" : "2021-08-05T15:32:43Z",
+        "updatedAt" : "2021-08-05T15:32:43Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "0d9693e3-1461-42e9-810e-5c5a6237addf",
+        "parentId" : "1c1254e2-778f-4046-9bf9-427395e21547",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "bc its special-casing for MaskedArray and special casing for `not values.isna().any()`",
+        "createdAt" : "2021-08-05T15:39:05Z",
+        "updatedAt" : "2021-08-05T15:39:05Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "2daf9894-f8a4-436d-9c35-4da8b35a3623",
+        "parentId" : "1c1254e2-778f-4046-9bf9-427395e21547",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "worse than that, it isnt `not values.isna().any()` but `not values._mask.any()`",
+        "createdAt" : "2021-08-05T15:39:40Z",
+        "updatedAt" : "2021-08-05T15:39:40Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "03dea8d7080f6d3ad8372c6092607eebbf768155",
+    "line" : 28,
+    "diffHunk" : "@@ -1,1 +1258,1262 @@        dropped = self.obj.dropna()\n\n        if is_extension_array_dtype(dropped.dtype):\n            # GH#41816 bc we have dropped NAs above, MaskedArrays can use the\n            #  numpy logic."
   }
 ]

@@ -1626,5 +1626,38 @@
     "commit" : "b22657afe1dbdff3d93d30f75f579685dffde764",
     "line" : 28,
     "diffHunk" : "@@ -1,1 +552,556 @@        **kwargs,\n    ):\n        from pandas.core.groupby.ops import BaseGrouper\n\n        if not isinstance(_grouper, BaseGrouper):"
+  },
+  {
+    "id" : "b4fb652f-47e5-468e-bc44-e7e943c74c8d",
+    "prId" : 42834,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42834#pullrequestreview-725966985",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "b6174e0f-e353-4d13-bc64-32303ed411a7",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "can you list the columns that are problematic in the error message?",
+        "createdAt" : "2021-08-08T23:12:07Z",
+        "updatedAt" : "2021-08-08T23:12:07Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "0873e613-7dc9-4bbc-9811-cbe4187b75db",
+        "parentId" : "b6174e0f-e353-4d13-bc64-32303ed411a7",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "updated + green",
+        "createdAt" : "2021-08-10T03:05:34Z",
+        "updatedAt" : "2021-08-10T03:05:34Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "4bcbd403340816b436ee5ecfa3069d73be3b46d6",
+    "line" : 17,
+    "diffHunk" : "@@ -1,1 +443,447 @@            dropped = mgr.items.difference(new_mgr.items)\n            warnings.warn(\n                \"Dropping of nuisance columns in rolling operations \"\n                \"is deprecated; in a future version this will raise TypeError. \"\n                \"Select only valid columns before calling the operation. \""
   }
 ]

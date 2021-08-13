@@ -328,5 +328,38 @@
     "commit" : "641a3667bc546d2e5eeb36c327ecd36350c92349",
     "line" : 4,
     "diffHunk" : "@@ -1,1 +2584,2588 @@\n\ndef test_loc_getitem_multiindex_tuple_level():\n    # GH#27591\n    lev1 = [\"a\", \"b\", \"c\"]"
+  },
+  {
+    "id" : "bd3913e2-dc18-416a-aae1-a461c80a3bef",
+    "prId" : 42329,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42329#pullrequestreview-717291971",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "bfec7932-135c-4f62-a6ca-57812c06b362",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "does this cover the cases by @attack68 in the comment?",
+        "createdAt" : "2021-07-28T01:46:19Z",
+        "updatedAt" : "2021-07-28T01:46:19Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "47a887fc-c44f-4efb-a0cc-8253308634d9",
+        "parentId" : "bfec7932-135c-4f62-a6ca-57812c06b362",
+        "authorId" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "body" : "only one of them i think",
+        "createdAt" : "2021-07-28T17:39:41Z",
+        "updatedAt" : "2021-07-28T17:39:41Z",
+        "lastEditedBy" : "adf621f1-4745-479a-a1fc-dc14046a3f4b",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "641a3667bc546d2e5eeb36c327ecd36350c92349",
+    "line" : 4,
+    "diffHunk" : "@@ -1,1 +2584,2588 @@\n\ndef test_loc_getitem_multiindex_tuple_level():\n    # GH#27591\n    lev1 = [\"a\", \"b\", \"c\"]"
   }
 ]

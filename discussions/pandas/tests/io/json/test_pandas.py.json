@@ -1670,5 +1670,38 @@
     "commit" : "415c3d0a00b904d72053cdd0a6f4ca1baf6df61f",
     "line" : 14,
     "diffHunk" : "@@ -1,1 +1761,1765 @@        result = df.to_json()\n        expected = (\n            \"{\\\"(Timestamp('2017-01-20 00:00:00'), 'foo')\\\":true,\"\n            \"\\\"(Timestamp('2017-01-20 00:00:00'), 'bar')\\\":true,\"\n            \"\\\"(Timestamp('2017-01-21 00:00:00'), 'foo')\\\":true,\""
+  },
+  {
+    "id" : "40e08668-d83d-47b2-ba7e-9568102b7c43",
+    "prId" : 42931,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42931#pullrequestreview-724946494",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "9baa510d-8b57-4319-baec-b73aed92f29b",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "can you add the issue reference as a comment on this tests and the one below.",
+        "createdAt" : "2021-08-08T23:22:14Z",
+        "updatedAt" : "2021-08-08T23:23:19Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "d714a613-f2fc-426e-87e9-cb54c2432f37",
+        "parentId" : "9baa510d-8b57-4319-baec-b73aed92f29b",
+        "authorId" : "e72c5c90-cfbd-4a08-b146-5f7b3902d12f",
+        "body" : "The comment is slightly further down the test so it's closer to the expected output, is that ok?",
+        "createdAt" : "2021-08-08T23:24:44Z",
+        "updatedAt" : "2021-08-08T23:24:44Z",
+        "lastEditedBy" : "e72c5c90-cfbd-4a08-b146-5f7b3902d12f",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "3011ccace1f8de8626e613f1af9c49aa0ecc1c64",
+    "line" : 6,
+    "diffHunk" : "@@ -1,1 +1772,1776 @@\n    def test_to_json_series_of_objects(self):\n        class _TestObject:\n            def __init__(self, a, b, _c, d):\n                self.a = a"
   }
 ]

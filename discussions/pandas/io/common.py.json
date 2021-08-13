@@ -1670,5 +1670,137 @@
     "commit" : "8e68d5e028058017df96ae232e2f04427450b8aa",
     "line" : 55,
     "diffHunk" : "@@ -1,1 +891,895 @@# Wrapper that wraps a StringIO buffer and reads bytes from it\n# Created for compat with pyarrow read_csv\nclass BytesIOWrapper(io.BytesIO):\n    buffer: StringIO | TextIOBase | None\n"
+  },
+  {
+    "id" : "1bae2329-9cc3-4462-8a78-cbff3d4a532e",
+    "prId" : 42669,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42669#pullrequestreview-714234066",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "4edcfed3-10b6-4705-bb00-be6a66ac3f61",
+        "parentId" : null,
+        "authorId" : "42aa2e10-a5f0-418e-8919-5ec1443b7f2b",
+        "body" : "Why can't you use `self.buffer`'s detach?",
+        "createdAt" : "2021-07-23T00:10:32Z",
+        "updatedAt" : "2021-07-23T00:10:33Z",
+        "lastEditedBy" : "42aa2e10-a5f0-418e-8919-5ec1443b7f2b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "5aca8e02-148f-437c-9f01-7a292534035b",
+        "parentId" : "4edcfed3-10b6-4705-bb00-be6a66ac3f61",
+        "authorId" : "8bcc6ff5-c629-4dcd-bcad-c702786f797e",
+        "body" : "That would close/mess up the buffer passed in by the user, which we won't want to touch. I think detach exists for GC purposes, but not sure.",
+        "createdAt" : "2021-07-23T21:52:17Z",
+        "updatedAt" : "2021-07-23T21:52:18Z",
+        "lastEditedBy" : "8bcc6ff5-c629-4dcd-bcad-c702786f797e",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "cb67c7bc-4249-4543-9856-9824ab3f3103",
+        "parentId" : "4edcfed3-10b6-4705-bb00-be6a66ac3f61",
+        "authorId" : "42aa2e10-a5f0-418e-8919-5ec1443b7f2b",
+        "body" : "I think this block:\r\nhttps://github.com/pandas-dev/pandas/pull/42669/files#diff-934d8564d648e7521db673c6399dcac98e45adfd5230ba47d3aabfcc21979febR105\r\nshould take care of not closing user-provided file handles?",
+        "createdAt" : "2021-07-23T22:17:30Z",
+        "updatedAt" : "2021-07-23T22:17:30Z",
+        "lastEditedBy" : "42aa2e10-a5f0-418e-8919-5ec1443b7f2b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "d1d6b4b9-80d3-402b-8733-93ee7b21e433",
+        "parentId" : "4edcfed3-10b6-4705-bb00-be6a66ac3f61",
+        "authorId" : "8bcc6ff5-c629-4dcd-bcad-c702786f797e",
+        "body" : "That calls detach, which is not implemented by BytesIO(the parent class of BytesIOWrapper).",
+        "createdAt" : "2021-07-23T22:47:01Z",
+        "updatedAt" : "2021-07-23T22:47:01Z",
+        "lastEditedBy" : "8bcc6ff5-c629-4dcd-bcad-c702786f797e",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "20d07263-ea0c-41e5-9071-6d4fad28bea5",
+        "parentId" : "4edcfed3-10b6-4705-bb00-be6a66ac3f61",
+        "authorId" : "42aa2e10-a5f0-418e-8919-5ec1443b7f2b",
+        "body" : "okay, sorry I wasn't aware of that.",
+        "createdAt" : "2021-07-24T13:20:13Z",
+        "updatedAt" : "2021-07-24T13:20:13Z",
+        "lastEditedBy" : "42aa2e10-a5f0-418e-8919-5ec1443b7f2b",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "8e68d5e028058017df96ae232e2f04427450b8aa",
+    "line" : 83,
+    "diffHunk" : "@@ -1,1 +919,923 @@            return to_return\n\n    def detach(self):\n        # Slightly modified from Python's TextIOWrapper detach method\n        if self.buffer is None:"
+  },
+  {
+    "id" : "5c320d21-b623-4820-a85d-29baa499728c",
+    "prId" : 42669,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42669#pullrequestreview-715116651",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "0d9257e5-c04f-4af2-a883-72be397ffc07",
+        "parentId" : null,
+        "authorId" : "42aa2e10-a5f0-418e-8919-5ec1443b7f2b",
+        "body" : "Maybe change the comment to something like \"the (text) handle is always provided by the caller since get_handle would have opened it in binary mode\". I am not sure whether that is clearer.",
+        "createdAt" : "2021-07-26T17:39:59Z",
+        "updatedAt" : "2021-07-26T17:39:59Z",
+        "lastEditedBy" : "42aa2e10-a5f0-418e-8919-5ec1443b7f2b",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "8e68d5e028058017df96ae232e2f04427450b8aa",
+    "line" : 44,
+    "diffHunk" : "@@ -1,1 +722,726 @@        # the (text) handle is always provided by the caller\n        # since get_handle would have opened it in binary mode\n        is_wrapped = True\n    elif is_text and (compression or _is_binary_mode(handle, ioargs.mode)):\n        handle = TextIOWrapper("
+  },
+  {
+    "id" : "9d0d131e-7421-4239-a4f1-e3a7815b14d1",
+    "prId" : 42669,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42669#pullrequestreview-722823329",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "cde0dd1c-a866-46f8-b38b-64d6501e5d0e",
+        "parentId" : null,
+        "authorId" : "42aa2e10-a5f0-418e-8919-5ec1443b7f2b",
+        "body" : "I don't know what pandas's policy is on public/private classes. Maybe name the class `_BytesIOWrapper`. @jreback ",
+        "createdAt" : "2021-07-28T20:25:05Z",
+        "updatedAt" : "2021-07-28T20:25:30Z",
+        "lastEditedBy" : "42aa2e10-a5f0-418e-8919-5ec1443b7f2b",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "99bd3bdb-dd4d-4045-892f-7a65a45b8868",
+        "parentId" : "cde0dd1c-a866-46f8-b38b-64d6501e5d0e",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "this is fine, this entire module is de-facto private.",
+        "createdAt" : "2021-08-04T23:45:07Z",
+        "updatedAt" : "2021-08-04T23:46:07Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "a227d919-3b76-4fed-929e-630cdd6734ce",
+        "parentId" : "cde0dd1c-a866-46f8-b38b-64d6501e5d0e",
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "and we already expose TextIOWrapper so this is similar",
+        "createdAt" : "2021-08-04T23:45:30Z",
+        "updatedAt" : "2021-08-04T23:46:07Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "8e68d5e028058017df96ae232e2f04427450b8aa",
+    "line" : 55,
+    "diffHunk" : "@@ -1,1 +891,895 @@# Wrapper that wraps a StringIO buffer and reads bytes from it\n# Created for compat with pyarrow read_csv\nclass BytesIOWrapper(io.BytesIO):\n    buffer: StringIO | TextIOBase | None\n"
   }
 ]

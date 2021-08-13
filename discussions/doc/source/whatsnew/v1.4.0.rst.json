@@ -97,5 +97,71 @@
     "commit" : "1c7ef8b7cdc0d46e2e9f79a99404a148b459d60a",
     "line" : 4,
     "diffHunk" : "@@ -1,1 +39,43 @@- Added ``sparse_index`` and ``sparse_columns`` keyword arguments to :meth:`.Styler.to_html` (:issue:`41946`)\n- Added keyword argument ``environment`` to :meth:`.Styler.to_latex` also allowing a specific \"longtable\" entry with a separate jinja2 template (:issue:`41866`)\n- :meth:`.Styler.apply_index` and :meth:`.Styler.applymap_index` added to allow conditional styling of index and column header values (:issue:`41893`)\n- :meth:`.GroupBy.cummin` and :meth:`.GroupBy.cummax` now support the argument ``skipna`` (:issue:`34047`)\n-"
+  },
+  {
+    "id" : "b15b3f32-d06b-469f-8c3d-3997fd916518",
+    "prId" : 42706,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42706#pullrequestreview-724882556",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "0590721e-2787-4504-b469-0845b93933df",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "why is this not an ipython example?",
+        "createdAt" : "2021-08-08T01:34:17Z",
+        "updatedAt" : "2021-08-08T01:35:06Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "30d1433f-c616-46e1-be75-d871e498bd63",
+        "parentId" : "0590721e-2787-4504-b469-0845b93933df",
+        "authorId" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "body" : "Same as above",
+        "createdAt" : "2021-08-08T09:41:56Z",
+        "updatedAt" : "2021-08-08T09:41:57Z",
+        "lastEditedBy" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "a9965b0fae9d2e13ee37c3b8325a38ae7fab56c7",
+    "line" : 36,
+    "diffHunk" : "@@ -1,1 +45,49 @@will have an ``Int64Index``:\n\n.. code-block:: ipython\n\n    In [2]: ser = pd.Series([1, 2, 3], index=[1, 2, 3])"
+  },
+  {
+    "id" : "dc3ee0bc-2773-4734-9107-3ca2f90799af",
+    "prId" : 42706,
+    "prUrl" : "https://github.com/pandas-dev/pandas/pull/42706#pullrequestreview-724882543",
+    "prSource" : "GitHub",
+    "comments" : [
+      {
+        "id" : "ab01e8ea-5278-4de1-baa5-21cc6fa4afb6",
+        "parentId" : null,
+        "authorId" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "body" : "can this be an ipython example?",
+        "createdAt" : "2021-08-08T01:34:42Z",
+        "updatedAt" : "2021-08-08T01:35:06Z",
+        "lastEditedBy" : "7086d5c0-382b-4c41-b70d-144a07643f71",
+        "tags" : [
+        ]
+      },
+      {
+        "id" : "7f122a50-71c7-4155-a78e-199d39c59162",
+        "parentId" : "ab01e8ea-5278-4de1-baa5-21cc6fa4afb6",
+        "authorId" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "body" : "This was done in anticipation of the removal of Int64Index etc. in 2.0, i.e. so this will not fail in 2.0.",
+        "createdAt" : "2021-08-08T09:41:48Z",
+        "updatedAt" : "2021-08-08T09:41:48Z",
+        "lastEditedBy" : "c2e7df75-d1fb-42be-9205-186b46cef3d7",
+        "tags" : [
+        ]
+      }
+    ],
+    "commit" : "a9965b0fae9d2e13ee37c3b8325a38ae7fab56c7",
+    "line" : 25,
+    "diffHunk" : "@@ -1,1 +34,38 @@For example, the code below returns an ``Int64Index`` with dtype ``int64``:\n\n.. code-block:: ipython\n\n    In [1]: pd.Index([1, 2, 3], dtype=\"int8\")"
   }
 ]
